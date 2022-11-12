@@ -130,7 +130,7 @@ p.tinytext {
 
 .prompt input {
     font-family: "Spectral-Italic";
-    font-size: calc(16px + 2em);
+    font-size: calc(20px + 2em);
     background-color: rgba(0,0,0,0);
     border: none;
     border-bottom: 3px solid #2b2b2b;
