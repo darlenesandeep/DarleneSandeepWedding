@@ -158,10 +158,10 @@ p.tinytext {
 
 @media (max-width: 1000px) {
     .prompt input {
-        font-size: 5em;
+        font-size: 6em;
     }
     .prompt button {
-        font-size: 4em;
+        font-size: 5em;
     }
 }
 
