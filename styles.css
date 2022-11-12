@@ -155,6 +155,16 @@ p.tinytext {
     font-size: 3em;
 }
 
+
+@media (max-width: 1000px) {
+    .prompt input {
+        font-size: 5em;
+    }
+    .prompt button {
+        font-size: 4em;
+    }
+}
+
 /* Home state */
 
 .home-transition {
