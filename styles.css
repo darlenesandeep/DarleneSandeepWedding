@@ -99,9 +99,11 @@ p.tinytext {
 }
 
 #root {
+    background-color: #fdf8f3;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%232b2b2b' fill-opacity='0.39'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
     /* background: radial-gradient(circle, transparent 20%, #FDF8F3 20%,#FDF8F3 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #FDF8F3 20%, #FDF8F3 80%, transparent 80%, transparent) 50px 50px, linear-gradient(#2b2b2b 8px, transparent 8px) 0 -4px, linear-gradient(90deg, #2b2b2b 8px, transparent 8px) -4px 0; */
     background-color: rgba(0, 0, 0, 0);
-    background-size: auto, auto, auto, auto;
+    background-size: auto, auto, auto, auto;    
     background-color: #FDF8F3;
     background-size: 100px 100px, 100px 100px, 50px 50px, 50px 50px;
 }
@@ -113,7 +115,7 @@ p.tinytext {
 
 @media (min-width: 1000px) {
     .wrapper {
-        background: linear-gradient(180deg, rgba(253,248,243,1) 90%, rgba(253,248,243,0) 100%);
+        background: linear-gradient(180deg, rgba(253,248,243,1) 70%, rgba(253,248,243,0) 100%);
     }
 }
 
