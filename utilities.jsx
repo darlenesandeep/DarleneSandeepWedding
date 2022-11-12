@@ -148,16 +148,22 @@ class Home extends React.Component {
         }
     }
 
-    toggleMusic = function () {
-        var on = <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" version="1.0" viewBox="0 0 75 75"><path d="M39 14 22 29H6v19h16l17 15V14z" style="stroke:#111;stroke-width:5;stroke-linejoin:round;fill:#111"/><path d="M48 28a20 20 0 0 1 0 21m7-28a30 30 0 0 1 0 35m7-42a39 39 0 0 1 0 49" style="fill:none;stroke:#111;stroke-width:5;stroke-linecap:round"/></svg>
-        var off = <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" stroke="#111" stroke-width="5" version="1.0" viewBox="0 0 75 75"><path fill="#111" stroke-linejoin="round" d="M39 14 22 29H6v19h16l17 15z"/><path fill="none" stroke-linecap="round" d="m49 26 20 24m0-24L49 50"/></svg>;
+    componentDidMount() {
+        var audio = document.getElementById('audioplayer');
+        audio.volume = 0.3;
     }
+
+    // toggleMusic = function () {
+    //     var on = <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" version="1.0" viewBox="0 0 75 75"><path d="M39 14 22 29H6v19h16l17 15V14z" style="stroke:#111;stroke-width:5;stroke-linejoin:round;fill:#111"/><path d="M48 28a20 20 0 0 1 0 21m7-28a30 30 0 0 1 0 35m7-42a39 39 0 0 1 0 49" style="fill:none;stroke:#111;stroke-width:5;stroke-linecap:round"/></svg>
+    //     var off = <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" stroke="#111" stroke-width="5" version="1.0" viewBox="0 0 75 75"><path fill="#111" stroke-linejoin="round" d="M39 14 22 29H6v19h16l17 15z"/><path fill="none" stroke-linecap="round" d="m49 26 20 24m0-24L49 50"/></svg>;
+    // }
 
     render() {
         return (
             <div className="wrapper">
                 <div className="home-transition"></div>
                 <div className="header">
+                    <audio id="audioplayer" ref="audio_player" src="media/LizOnTopOfTheWorld.mp3" style={{left: "0px", position:"absolute"}} controls autoPlay />
                     <div className="header-title">D & S</div>
                 </div>
                 <img src="media/ThornburyCastle.gif" style={{width: "100vw", objectFit: "cover"}} alt="Quick clips of Thornbury Castle, a Tudor castle first constructed in the 1500s." />
