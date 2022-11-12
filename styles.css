@@ -128,6 +128,16 @@ p.tinytext {
     animation: circleTransition 2.5s ease-in-out;
 }
 
+.prompt .input-field {
+    margin-top: 10%;
+}
+
+@media (min-width: 1000px) {
+    .prompt .input-field {
+        margin-top: 1%;
+    }
+}
+
 .prompt input {
     font-family: "Spectral-Italic";
     font-size: 3em;
@@ -203,7 +213,7 @@ p.tinytext {
 
 @media (min-width: 1000px) {
     .save-the-date-wrapper {
-        margin: 8em 30%;
+        margin: 8em 25%;
     }
 }
 

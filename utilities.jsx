@@ -107,11 +107,11 @@ class Prompt extends React.Component {
 
         return (
             <div className="wrapper">
-                    <div className="prompt" style={{background: "radial-gradient(circle at 50% 30%, #2b2b2b, #2b2b2b " + this.props.radial + "%, rgba(0,0,0,0) 0%)"}}>
+                <div className="prompt" style={{background: "radial-gradient(circle at 50% 30%, #2b2b2b, #2b2b2b " + this.props.radial + "%, rgba(0,0,0,0) 0%)"}}>
                     <div className="row" style={{marginTop: "10%"}}>
                         <h1>Darlene & Sandeep</h1>
                     </div>
-                    <div className="row" style={{marginTop: "10%"}}>
+                    <div className="row input-field" >
                         <div className="row" style={{height: "3em"}}>
                             <span className={showError} style={{color: "#ff451a", fontSize: "2em", fontFamily: "Spectral"}} >
                                 <svg xmlns="http://www.w3.org/2000/svg" style={{height: "0.7em", marginRight: "0.3em", fill:"#ff451a"}}  xmlSpace="preserve" viewBox="0 0 460.8 460.8"><path d="M285 230 456 59c6-6 6-16 0-22L424 5a16 16 0 0 0-22 0L230 176 59 5a16 16 0 0 0-22 0L5 37c-7 6-7 16 0 22l171 171L5 402c-6 6-6 15 0 21l32 33a16 16 0 0 0 22 0l171-171 172 171a16 16 0 0 0 21 0l33-33c6-6 6-15 0-21L285 230z"/></svg>
