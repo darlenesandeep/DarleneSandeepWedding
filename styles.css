@@ -1,0 +1,238 @@
+@font-face {
+    font-family: "Parisienne";
+    src: url('media/fonts/Parisienne-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Cinzel";
+    src: url('media/fonts/Cinzel-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: "Spectral-Italic";
+    src: url('media/fonts/Spectral-ExtraLightItalic.ttf');
+}
+
+@font-face {
+    font-family: "Spectral";
+    src: url('media/fonts/Spectral-Regular.ttf');
+}
+
+/* Globals */
+body {
+    background-color: #FDF8F3;
+    color: #2b2b2b;
+    margin: 0px;
+}
+
+h1 {
+    font-family: "Parisienne";
+    font-size: 7em;
+    font-weight: 100;
+}
+
+h2 {
+    font-family: "Parisienne";
+    font-size: 7em;
+    font-weight: 100;
+}
+
+h3 {
+    font-family: "Cinzel";
+    font-size: 3em;
+    font-weight: 100;
+}
+
+p {
+    font-family: "Spectral-Italic";
+    font-size: 3em;
+}
+
+p.tinytext {
+    font-family: "Spectral-Italic";
+    font-size: 2em;
+}
+
+@media (max-width: 1000px) {
+    h2 {
+        font-size: 10em;
+    }
+    
+    h3 {
+        font-size: 4em;
+    }
+    
+    p {
+        font-size: 4em;
+    }
+    
+    p.tinytext {
+        font-size: 2em;
+    }
+}
+
+.row {
+    align-items: center;
+    display: inline-grid;
+    justify-content: center;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.swirl {
+    fill: #D4AF37;
+}
+
+.footer {
+    position: relative;
+    bottom: 0px;
+    width: 100vw;
+    height: 2.5em;
+    text-align: center;
+    font-size: 2em;
+    padding-top: 1em;
+    color: #FDF8F3;
+    background-color: #2b2b2b;
+}
+
+#root {
+    background: radial-gradient(circle, transparent 20%, #FDF8F3 20%,#FDF8F3 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #FDF8F3 20%, #FDF8F3 80%, transparent 80%, transparent) 50px 50px, linear-gradient(#2b2b2b 8px, transparent 8px) 0 -4px, linear-gradient(90deg, #2b2b2b 8px, transparent 8px) -4px 0;
+    background-color: rgba(0, 0, 0, 0);
+    background-size: auto, auto, auto, auto;
+    background-color: #FDF8F3;
+    background-size: 100px 100px, 100px 100px, 50px 50px, 50px 50px;
+}
+
+.wrapper {
+    background: rgb(253,248,243);
+    background: linear-gradient(180deg, rgba(253,248,243,1) 60%, rgba(253,248,243,0) 100%);
+}
+
+@media (min-width: 1000px) {
+    .wrapper {
+        background: linear-gradient(180deg, rgba(253,248,243,1) 90%, rgba(253,248,243,0) 100%);
+    }
+}
+
+/* Prompt state */ 
+
+.prompt {
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+}
+.prompt.success {
+    animation: circleTransition 2.5s ease-in-out;
+}
+
+.prompt input {
+    font-family: "Spectral-Italic";
+    font-size: 3em;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    border-bottom: 3px solid #2b2b2b;
+    color: #2b2b2b;
+    text-align: center;
+    width: 8em;
+}
+.prompt input:focus {
+    outline: none;
+}
+.prompt input.shake {
+    animation: shake 0.3s;
+}
+
+.prompt button {
+    margin-top: 5px;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    cursor: pointer;
+    color: #2b2b2b;
+    font-family: "Spectral";
+    font-size: 3em;
+}
+
+/* Home state */
+
+.home-transition {
+    height: 100vh;
+    width: 100vw;
+    animation: homeTransition ease-in 1s forwards;
+    background-color: #2b2b2b;
+    position: fixed;
+    pointer-events: none;
+    z-index: 101;
+}
+
+.header {
+    height: 4em;
+    padding-top: 0.2em;
+    width: 100vw;
+    background-color: #FDF8F3;
+    text-align: center;
+    position: fixed;
+    top: 0px;
+    z-index: 100;
+}
+.header-title {
+    font-family: "Parisienne";
+    font-size: 3em;
+}
+
+.save-the-date-wrapper {
+    align-items: center;
+    margin: 4em;
+    justify-content: center;
+    text-align: center;
+    background-color: #FDF8F3;
+}
+
+@media (min-width: 1000px) {
+    .save-the-date-wrapper {
+        margin: 8em 30%;
+    }
+}
+
+.save-the-date-outer {
+    border: 3px solid #D4AF37;
+}
+
+.save-the-date-inner {
+    border: 3px solid #D4AF37;
+    margin: 1em;
+}
+
+/* Animations */
+
+@keyframes shake {
+    0%{
+      transform: translateX(0)
+    }
+    20%{
+      transform: translateX(25px);
+    }
+    40% {
+      transform: translateX(-25px);
+    }
+    60%{
+        transform: translateX(25px);
+    }
+    80% {
+        transform: translateX(-25px);
+    }
+    100%{
+      transform: translateX(0px);
+    }
+}
+
+@keyframes homeTransition {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
