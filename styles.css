@@ -198,6 +198,7 @@ p.tinytext {
     justify-content: center;
     text-align: center;
     background-color: #FDF8F3;
+    min-width: 700px;
 }
 
 @media (min-width: 1000px) {
