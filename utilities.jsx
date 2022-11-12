@@ -168,7 +168,7 @@ class Home extends React.Component {
                                 Darlene <br /> & Sandeep
                             </h2>
                             <br />
-                            <h3>
+                            <h3 style={{whiteSpace: "nowrap"}}>
                                 <SwirlLeft /> Save the Date <SwirlRight />
                             </h3>
                             <br />
