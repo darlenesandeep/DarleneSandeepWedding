@@ -5,6 +5,7 @@
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
 const pw = "430d8276051405c7d2fa3f4e8a361a6d8937f4e6c61c5ebeee1664b755891334";
+// import { slide as Menu } from './react-burger-menu.js';
 
 /* 
     Obviously don't store or handle authentication on the front end, but for the purposes of this site this is sufficient. 
@@ -57,7 +58,7 @@ class Router extends React.Component {
     }
 
     render() {
-        if (this.state.authenticated) {
+        if (this.state.authenticated || true) {
             return <Home />;
         }
         else {
@@ -86,7 +87,6 @@ class Prompt extends React.Component {
     }
 
     checkInput = (e) => {
-        console.log(e)
         if (e == 'btn' || e.code == 'Enter') {
             this.props.handleAuth(this.state.inputVal);
         }
@@ -141,16 +141,101 @@ class SwirlRight extends React.Component {
     }
 }
 
+class Header extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            showMenu: false,
+        }
+
+        this.menuRef = React.createRef();
+    }
+
+    componentDidMount() {
+        document.addEventListener("mousedown", (e) => this.closeMenu(e));
+    }
+
+    closeMenu(e) {
+        if (this.menuRef && !this.menuRef.current.contains(e.target)) {
+            this.setState({showMenu: false});
+        }
+    }
+
+    openMenu() {
+        this.setState({showMenu: !this.state.showMenu});
+    }
+
+    menuHandler(page) {
+        this.setState({showMenu: false});
+        this.props.pageTurnHandler(page);
+    }
+
+    render() {;
+
+        var navClass = "-full";
+        let mobile = false;
+        if (window.innerWidth < 1000) {
+            mobile = true;
+            navClass = "-collapsed";
+            if (this.state.showMenu) {
+                navClass += ' active';
+            }
+        }
+
+        return (
+            <div className="header">
+                <audio id="audioplayer" ref="audio_player" src="media/LizOnTopOfTheWorld.mp3" style={{float: "left"}} controls autoPlay />
+                <div style={{display: mobile ? 'initial' : 'none', float: "right", marginRight: "2em", marginTop: "0.7em", padding: "3px 6px"}}
+                    onClick={() => this.openMenu()}>
+                    <svg
+                        height={36}
+                        width={36}
+                        viewBox="0 0 32 32"
+                        style={{
+                            enableBackground: "new 0 0 32 32",
+                        }}
+                        xmlSpace="preserve"
+                        xmlns="http://www.w3.org/2000/svg"
+                        >
+                        <path fill="#FFCDB2" d="M4 10h24a2 2 0 0 0 0-4H4a2 2 0 0 0 0 4zm24 4H4a2 2 0 0 0 0 4h24a2 2 0 0 0 0-4zm0 8H4a2 2 0 0 0 0 4h24a2 2 0 0 0 0-4z" />
+                    </svg>
+                </div>
+                <div className={"menu" + navClass} ref={this.menuRef}>
+                    <div key="pageturn-travel" className="nav-page menu-item" onClick={() => this.menuHandler('travel')}>When & Where</div>
+                    <div key="pageturn-details" className="nav-page menu-item" onClick={() => this.menuHandler('details')}>Details</div>
+                    <div key="pageturn-gift" className="nav-page menu-item" onClick={() => this.menuHandler('gift')}>Gift</div>
+                    <div key="pageturn-accom" className="nav-page menu-item" onClick={() => this.menuHandler('accomodation')}>Accomodations</div>
+                    <div key="pageturn-rsvp" className="nav-page menu-item solid" onClick={() => this.menuHandler('rsvp')}>RSVP</div>
+                </div>
+                <div className="header-title">D & S</div>
+                <div className="burger-icon"></div>
+            </div>
+        )
+    };
+}
+
 class Home extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-        }
+        // this.state = {
+        //     view: 'home'
+        // }
     }
 
     componentDidMount() {
         var audio = document.getElementById('audioplayer');
         audio.volume = 0.3;
+    }
+
+    pageTurn(page) {
+        // this.setState({view: page})
+        if (page == 'rsvp') {
+            window.open('https://darlenesandeepwedding.anrsvp.com/#home', '_blank');
+        }
+        else {
+            document.getElementById(page).scrollIntoView({behavior: 'smooth'});
+        }
     }
 
     // toggleMusic = function () {
@@ -162,52 +247,275 @@ class Home extends React.Component {
         return (
             <div className="wrapper">
                 <div className="home-transition"></div>
-                <div className="header">
-                    <audio id="audioplayer" ref="audio_player" src="media/LizOnTopOfTheWorld.mp3" style={{left: "0px", position:"absolute"}} controls autoPlay />
-                    <div className="header-title">D & S</div>
-                </div>
-                <img src="media/ThornburyCastle.gif" style={{width: "100vw", objectFit: "cover"}} alt="Quick clips of Thornbury Castle, a Tudor castle first constructed in the 1500s." />
-                <div className="save-the-date-wrapper">
-                    <div className="save-the-date-outer">
-                        <div className="save-the-date-inner">
-                            <h2>
-                                Darlene <br /> & Sandeep
-                            </h2>
-                            <br />
-                            <h3 style={{whiteSpace: "nowrap"}}>
-                                <SwirlLeft /> Save the Date <SwirlRight />
-                            </h3>
-                            <br />
-                            <p>
-                                8.8.2023
-                            </p>
-                            <p>
-                                Thornbury Castle <br />
-                                Bristol, UK
-                            </p>
-                            <p className="tinytext" style={{margin: "4em 0em 2em 0em"}}>
-                                Be a part of our fairy tale
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <iframe className="googlemaps-embed" 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2477.503709183141!2d-2.5323502825561524!3d51.6139815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487195789c7b6ecd%3A0x21cd6d9762f197dd!2sThornbury%20Castle%20Hotel%20%26%20Restaurant!5e0!3m2!1sen!2sus!4v1668207026806!5m2!1sen!2sus" 
-                        width="600" 
-                        height="450" 
-                        style={{border: "0px", width: "100vw"}}
-                        allowFullScreen="" 
-                        loading="lazy" 
-                        referrerPolicy="no-referrer-when-downgrade">
-                </iframe>
-                <div style={{marginTop: "3em", marginBottom: "3em", width: "100vw", textAlign: "center", fontSize:"2em", backgroundColor: "#FDF8F3"}}>
-                    Check back to this site in January for RSVP, wedding, travel, and accomodation details!
-                </div>
-                
+                <Header pageTurnHandler={this.pageTurn}/>
+                <Body />
                 <Footer />
             </div>
         );
     }
 }
 
+class Body extends React.Component {
+    render () {
+        return (
+            <div className="body">
+                <Landing />
+                <Travel />
+                <Details />
+                <ImgSection img="media/darlenesandeeplandscape2.jpg" />
+                <Gift />
+                <ImgSection img="media/darlenesandeep-hands.jpg" />
+                <Accomodation />
+            </div>
+        )
+        
+    }
+}
+
+class Landing extends React.Component {
+    render() {
+        var imgsrc = "media/darlenesandeeplandscape-reduced.jpg";
+        var imgtextClass = " desktop";
+        if (window.innerWidth < 1000) {
+            imgsrc = "media/darlenesandeeplandscape-cropped.jpg";
+            imgtextClass = " mobile";
+        }
+        return (
+            <div>
+                <img src={imgsrc} style={{marginTop: "4em", width: window.innerWidth, height: (window.innerHeight - 64), objectFit: "cover"}}></img>
+                <div className={"imgtext" + imgtextClass}>
+                    <h1>
+                        Darlene & Sandeep
+                    </h1>
+                    <h3 style={{marginTop: "-2em", fontSize: "3em"}}>
+                        ARE GETTING MARRIED
+                    </h3>
+                </div>
+            </div>
+        )
+        // return (
+        //     <>
+        //         <img src="media/ThornburyCastle.gif" style={{width: "100vw", objectFit: "cover"}} alt="Quick clips of Thornbury Castle, a Tudor castle first constructed in the 1500s." />
+        //             <div className="save-the-date-wrapper">
+        //                 <div className="save-the-date-outer">
+        //                     <div className="save-the-date-inner">
+        //                         <h2>
+        //                             Darlene <br /> & Sandeep
+        //                         </h2>
+        //                         <br />
+        //                         <h3 style={{whiteSpace: "nowrap"}}>
+        //                             <SwirlLeft /> Save the Date <SwirlRight />
+        //                         </h3>
+        //                         <br />
+        //                         <p>
+        //                             8.8.2023
+        //                         </p>
+        //                         <p>
+        //                             Thornbury Castle <br />
+        //                             Bristol, UK
+        //                         </p>
+        //                         <p className="tinytext" style={{margin: "4em 0em 2em 0em"}}>
+        //                             Be a part of our fairy tale
+        //                         </p>
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //         <iframe className="googlemaps-embed" 
+        //             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2477.503709183141!2d-2.5323502825561524!3d51.6139815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487195789c7b6ecd%3A0x21cd6d9762f197dd!2sThornbury%20Castle%20Hotel%20%26%20Restaurant!5e0!3m2!1sen!2sus!4v1668207026806!5m2!1sen!2sus" 
+        //             width="600" 
+        //             height="450" 
+        //             style={{border: "0px", width: "100vw"}}
+        //             allowFullScreen="" 
+        //             loading="lazy" 
+        //             referrerPolicy="no-referrer-when-downgrade">
+        //         </iframe>
+        //         <div style={{marginTop: "3em", marginBottom: "3em", width: "100vw", textAlign: "center", fontSize:"2em", backgroundColor: "#FDF8F3"}}>
+        //             Check back to this site in January for RSVP, wedding, travel, and accomodation details!
+        //         </div>
+        //     </>
+        //     /*
+        //         RSVP Here By May 1, 2023
+        //         https://darlenesandeepwedding.anrsvp.com/
+        //     */
+        // )
+    }
+}
+
+class Travel extends React.Component {
+    
+    render() {
+
+        let mobile = false;
+        if (window.innerWidth < 1000) {
+            mobile = true;
+        }
+
+        return (
+            <div>
+                <div id="travel" style={{marginTop: "-8em", position: "absolute"}}></div>
+                <div className="save-the-date-wrapper">
+                    <div className="save-the-date-outer">
+                        <div className="save-the-date-inner">
+                            <h2>
+                                Darlene <br /> & <br />Sandeep
+                            </h2>
+                            <br />
+                            <h3 style={{whiteSpace: "nowrap"}}>
+                                <SwirlLeft /> Save the Date <SwirlRight />
+                            </h3>
+                            <br />
+                            <p style={{fontWeight: "600", fontSize: "2.5em"}}>
+                                8.8.2023
+                            </p>
+                            <p>
+                                Thornbury Castle <br />
+                                Bristol, UK
+                            </p>
+                            <p style={{margin: "2em 0em 2em 0em"}}>
+                                Be a part of our fairy tale
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div style={{display: mobile ? 'block' : "flex"}}>
+                    <img src="media/ThornburyCastle.gif" style={{width: mobile ? "100vw" : "50vw", objectFit: "cover"}} alt="Quick clips of Thornbury Castle, a Tudor castle first constructed in the 1500s." />
+                    <iframe className="googlemaps-embed" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2477.503709183141!2d-2.5323502825561524!3d51.6139815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487195789c7b6ecd%3A0x21cd6d9762f197dd!2sThornbury%20Castle%20Hotel%20%26%20Restaurant!5e0!3m2!1sen!2sus!4v1668207026806!5m2!1sen!2sus" 
+                        width={ mobile ? "100vw" : "50vw"}
+                        height={ mobile ? "30vh" : "auto"} 
+                        style={{border: "0px", width:  mobile ? "100vw" : "50vw", height: mobile ? "30vh" : "auto"}}
+                        allowFullScreen="" 
+                        loading="lazy" 
+                        referrerPolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        );
+    }
+}
+
+class Details extends React.Component {
+    render() {
+        let mobile = false;
+        let br = '';
+        if (window.innerWidth < 1000) {
+            mobile = true;
+            br = <br />;
+        }
+
+        return (
+            <div id="details" className="section" style={{display: mobile ? 'block' : 'flex', backgroundColor: "#FDF8F3"}}>
+                <div style={{float: "left", width: mobile ? '100%' : '40%', textAlign: "center"}}>
+                    <h2 style={{marginTop: "15%", textAlign: "-webkit-center"}}>
+                        <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", marginBottom: ".5em"}}></div>
+                        Wedding Details
+                        <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", marginTop: ".5em"}}></div>
+                    </h2>
+                    <p>Please wear appropriate formal attire.</p>
+                </div>
+                <div style={{float: "right", width: mobile ? '100%' : '40%', paddingRight: mobile ? '0em' : '4em', textAlign: mobile ? 'center' : 'left'}}>
+                    <h3>Schedule</h3>
+                    <h4><span className="highlight -english_lavender">3:30PM</span>{br} Ceremony - Castle Lounge</h4>
+                    <p>Please join us at the lounge at Thornbury Castle for our wedding ceremony.</p>
+                    <h4><span className="highlight -english_lavender">4:30PM</span>{br} Canapés and Lawn Games - Lawn</h4>
+                    <p>Following the Ceremony, we welcome you to partake in refreshments and lawn games such as archery and croquet.</p>
+                    <h4><span className="highlight -english_lavender">6:00PM</span>{br} Dinner Reception - Baron’s Sitting Room</h4>
+                    <p>We will have a formal three course dinner and wedding cake. Ending the night with golden hour photos, treats, activities, and traditional games as played in Tudor England. </p>
+                </div>
+            </div>
+        )
+    }
+}
+class Accomodation extends React.Component {
+    
+    booking(dir) {
+        if (dir == 'swan') {
+            window.open('https://www.swanthornbury.co.uk', '_blank');
+        }
+        else if (dir == 'lodge') {
+            window.open('https://thornburygc.co.uk/thornbury-lodge/', '_blank');
+        }
+        else if (dir == 'alveston') {
+            window.open('https://www.premierinn.com/gb/en/hotels/england/bristol/bristol/bristol-alveston.html', '_blank');
+        }
+    }
+
+    render() {
+        
+        let marginP = '25%';
+
+        if (window.innerWidth < 1000) {
+            marginP = '5%';
+        }
+
+        return (
+            <div id="accomodation" className="section" style={{backgroundColor: "#FFCDB2", textAlign: "center"}}>
+                <div style={{marginLeft: marginP, marginRight: marginP}}>
+                    <h2 style={{textAlign: "-webkit-center"}}>
+                        <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", marginBottom: ".5em"}}></div>
+                        Accomodations
+                        <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", marginTop: ".5em"}}></div>
+                    </h2>
+                    <p>The following are locations near the wedding venue. There are numberous other options available in Bristol City.</p>
+                    <h3 className="-old_lavender"  style={{marginTop: "2em"}}>Thornbury Castle</h3>
+                    <p>If you’d like a 10% discount at Thornbury Castle,<span style={{fontWeight: "600"}}> please contact our Wedding Coordinator, Paige Daniel-Locke (Direct Line: 01454 506191, Email: events@thornburycastle.co.uk) </span>
+                        and mention our wedding day and the rooms you’d like to book. You cannot receive a 10% discount through online booking.</p>
+                    <h3 className="-old_lavender" style={{marginTop: "2em"}}>The Swan Thornbury</h3>
+                    <p>A quaint English Bed and Breakfast which is ~10 mins walk from Thornbury Castle. </p>
+                    <button onClick={() => this.booking('swan')}>Book</button>
+                    <h3 className="-old_lavender" style={{marginTop: "2em"}}>Thornbury Lodge</h3>
+                    <p>A unique accommodation with an eventful history dating back to the mid 1500’s. Around 5 mins drive from Thornbury Castle and 30 mins by walking.</p>
+                    <button onClick={() => this.booking('lodge')}>Book</button>
+                    <h3 className="-old_lavender" style={{marginTop: "2em"}}>Premier Inn Bristol (Alveston) hotel </h3>
+                    <p>A standard motel. Also around 5 mins drive away to Thornbury Castle.</p>
+                    <button onClick={() => this.booking('alveston')}>Book</button>
+                </div>
+            </div>
+        );
+    }
+}
+
+class Gift extends React.Component {
+    
+    render() {
+
+        let marginP = '25%';
+
+        if (window.innerWidth < 1000) {
+            marginP = '5%';
+        }
+
+        return (
+            <div id="gift" className="section" style={{textAlign: "center", marginLeft: marginP, marginRight: marginP}}>
+                <h2 style={{textAlign: "-webkit-center"}}>
+                    <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", marginBottom: ".5em"}}></div>
+                    Wedding Gifts
+                    <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", marginTop: ".5em"}}></div>
+                </h2>
+                <p>We are grateful to have accumulated many things that we need. Please do not feel pressured to bring a present all the way to the UK!</p>
+                <p>If you would like to celebrate us, we welcome you to partake in a Chinese tradition of gifting newlyweds a <a href="https://www.thoughtco.com/chinese-new-year-red-envelope-687537" target="_blank">red envelope</a> (红包 - angpao) of lucky money to bless and bring prosperity to our married life. 
+                </p>
+            </div>
+        );
+    }
+    /*
+        We are grateful to have accumulated many things that we need. Please do not feel pressured to bring a present all the way to the UK!
+
+        If you would like to celebrate us, we welcome you to partake in a Chinese tradition of gifting newlyweds a red envelope (红包 - angpao) of lucky money to bless and bring prosperity to our married life. 
+    */
+}
+
+class ImgSection extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div>
+                <img src={this.props.img} style={{height: "50vh", width: "100vw", objectFit: "cover"}}></img>
+            </div>
+        )
+    }
+}
 root.render(<Router />);
