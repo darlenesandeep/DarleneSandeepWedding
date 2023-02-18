@@ -39,8 +39,6 @@ class Router extends React.Component {
         var digest = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 
         if (digest === pw) {
-
-            /* I really wish radial-gradient can be animated... you can't use CSS keyframes :( */
             var radialGradientInterval = setInterval(() => {
                 this.setState({radial: this.state.radial+6});
                 if (this.state.radial >= 100) {
@@ -58,7 +56,7 @@ class Router extends React.Component {
     }
 
     render() {
-        if (this.state.authenticated || true) {
+        if (this.state.authenticated) {
             return <Home />;
         }
         else {
@@ -218,9 +216,6 @@ class Header extends React.Component {
 class Home extends React.Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     view: 'home'
-        // }
     }
 
     componentDidMount() {
@@ -237,11 +232,6 @@ class Home extends React.Component {
             document.getElementById(page).scrollIntoView({behavior: 'smooth'});
         }
     }
-
-    // toggleMusic = function () {
-    //     var on = <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" version="1.0" viewBox="0 0 75 75"><path d="M39 14 22 29H6v19h16l17 15V14z" style="stroke:#111;stroke-width:5;stroke-linejoin:round;fill:#111"/><path d="M48 28a20 20 0 0 1 0 21m7-28a30 30 0 0 1 0 35m7-42a39 39 0 0 1 0 49" style="fill:none;stroke:#111;stroke-width:5;stroke-linecap:round"/></svg>
-    //     var off = <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" stroke="#111" stroke-width="5" version="1.0" viewBox="0 0 75 75"><path fill="#111" stroke-linejoin="round" d="M39 14 22 29H6v19h16l17 15z"/><path fill="none" stroke-linecap="round" d="m49 26 20 24m0-24L49 50"/></svg>;
-    // }
 
     render() {
         return (
@@ -293,51 +283,6 @@ class Landing extends React.Component {
                 </div>
             </div>
         )
-        // return (
-        //     <>
-        //         <img src="media/ThornburyCastle.gif" style={{width: "100vw", objectFit: "cover"}} alt="Quick clips of Thornbury Castle, a Tudor castle first constructed in the 1500s." />
-        //             <div className="save-the-date-wrapper">
-        //                 <div className="save-the-date-outer">
-        //                     <div className="save-the-date-inner">
-        //                         <h2>
-        //                             Darlene <br /> & Sandeep
-        //                         </h2>
-        //                         <br />
-        //                         <h3 style={{whiteSpace: "nowrap"}}>
-        //                             <SwirlLeft /> Save the Date <SwirlRight />
-        //                         </h3>
-        //                         <br />
-        //                         <p>
-        //                             8.8.2023
-        //                         </p>
-        //                         <p>
-        //                             Thornbury Castle <br />
-        //                             Bristol, UK
-        //                         </p>
-        //                         <p className="tinytext" style={{margin: "4em 0em 2em 0em"}}>
-        //                             Be a part of our fairy tale
-        //                         </p>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         <iframe className="googlemaps-embed" 
-        //             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2477.503709183141!2d-2.5323502825561524!3d51.6139815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487195789c7b6ecd%3A0x21cd6d9762f197dd!2sThornbury%20Castle%20Hotel%20%26%20Restaurant!5e0!3m2!1sen!2sus!4v1668207026806!5m2!1sen!2sus" 
-        //             width="600" 
-        //             height="450" 
-        //             style={{border: "0px", width: "100vw"}}
-        //             allowFullScreen="" 
-        //             loading="lazy" 
-        //             referrerPolicy="no-referrer-when-downgrade">
-        //         </iframe>
-        //         <div style={{marginTop: "3em", marginBottom: "3em", width: "100vw", textAlign: "center", fontSize:"2em", backgroundColor: "#FDF8F3"}}>
-        //             Check back to this site in January for RSVP, wedding, travel, and accomodation details!
-        //         </div>
-        //     </>
-        //     /*
-        //         RSVP Here By May 1, 2023
-        //         https://darlenesandeepwedding.anrsvp.com/
-        //     */
-        // )
     }
 }
 
@@ -498,11 +443,6 @@ class Gift extends React.Component {
             </div>
         );
     }
-    /*
-        We are grateful to have accumulated many things that we need. Please do not feel pressured to bring a present all the way to the UK!
-
-        If you would like to celebrate us, we welcome you to partake in a Chinese tradition of gifting newlyweds a red envelope (红包 - angpao) of lucky money to bless and bring prosperity to our married life. 
-    */
 }
 
 class ImgSection extends React.Component {
