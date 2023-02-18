@@ -352,9 +352,9 @@ class Details extends React.Component {
             <div id="details" className="section" style={{display: mobile ? 'block' : 'flex', backgroundColor: "#FDF8F3"}}>
                 <div style={{float: "left", width: mobile ? '100%' : '40%', textAlign: "center"}}>
                     <h2 style={{marginTop: "15%", textAlign: "-webkit-center"}}>
-                        <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", marginBottom: ".5em"}}></div>
+                        <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", margin: "0 auto .5em auto"}}></div>
                         Wedding Details
-                        <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", marginTop: ".5em"}}></div>
+                        <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", margin: ".5em auto 0 auto"}}></div>
                     </h2>
                     <p>Please wear appropriate formal attire.</p>
                 </div>
@@ -397,9 +397,9 @@ class Accomodation extends React.Component {
             <div id="accomodation" className="section" style={{backgroundColor: "#FFCDB2", textAlign: "center"}}>
                 <div style={{marginLeft: marginP, marginRight: marginP}}>
                     <h2 style={{textAlign: "-webkit-center"}}>
-                        <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", marginBottom: ".5em"}}></div>
+                        <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", margin: "0 auto .5em auto"}}></div>
                         Accomodations
-                        <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", marginTop: ".5em"}}></div>
+                        <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", margin: ".5em auto 0 auto"}}></div>
                     </h2>
                     <p>The following are locations near the wedding venue. There are numberous other options available in Bristol City.</p>
                     <h3 className="-old_lavender"  style={{marginTop: "2em"}}>Thornbury Castle</h3>
@@ -433,9 +433,9 @@ class Gift extends React.Component {
         return (
             <div id="gift" className="section" style={{textAlign: "center", marginLeft: marginP, marginRight: marginP}}>
                 <h2 style={{textAlign: "-webkit-center"}}>
-                    <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", marginBottom: ".5em"}}></div>
+                    <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", margin: "0 auto .5em auto"}}></div>
                     Wedding Gifts
-                    <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", marginTop: ".5em"}}></div>
+                    <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", margin: ".5em auto 0 auto"}}></div>
                 </h2>
                 <p>We are grateful to have accumulated many things that we need. Please do not feel pressured to bring a present all the way to the UK!</p>
                 <p>If you would like to celebrate us, we welcome you to partake in a Chinese tradition of gifting newlyweds a <a href="https://www.thoughtco.com/chinese-new-year-red-envelope-687537" target="_blank">red envelope</a> (红包 - angpao) of lucky money to bless and bring prosperity to our married life. 
