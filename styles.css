@@ -92,9 +92,11 @@ button:hover {
     h3 {
         font-size: 4em;
     }
-    
+    h4 {
+        font-size: 2em;
+    }
     p, button {
-        font-size: 3em;
+        font-size: 2em;
     }
     
     button {
@@ -179,22 +181,22 @@ button:hover {
     margin-right: 6em;
     margin-left: -20em;
 }
-.menu-item {
+.menu-item, .btn-solid {
+    cursor: pointer;
     font-family: 'Cinzel';
 }
 .menu-full .menu-item {
-    cursor: pointer;
     float: left;
     padding: 0.7em 1em;
     animation-name: fadein;
     animation-duration: 0.3s;
 }
-.menu-item.solid {
+.menu-item.solid, .btn-solid {
     background-color: #fff;
     border: 1px solid #2b2b2b;
     margin-left: 1em;
 }
-.menu-full .menu-item.solid:hover {
+.menu-full .menu-item.solid:hover, .btn-solid:hover {
     background-color: #6D6875;
     color: #fff;
     -webkit-transition: background-color .2s linear;
@@ -253,10 +255,15 @@ button:hover {
     margin-left: 0em;
 }
 
+.btn-solid {
+    font-size: 2em;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
 .highlight {
     font-family: "Spectral-Bold";
 }
-
 .-apricot {
     color: #FFCDB2;
 }

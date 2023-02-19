@@ -256,6 +256,7 @@ class Body extends React.Component {
                 <Gift />
                 <ImgSection img="media/darlenesandeep-hands.jpg" />
                 <Accomodation />
+                <RSVP />
             </div>
         )
         
@@ -264,18 +265,20 @@ class Body extends React.Component {
 
 class Landing extends React.Component {
     render() {
-        var imgsrc = "media/darlenesandeeplandscape-reduced.jpg";
+        var imgsrc = "media/darlenesandeeplandscape.jpg";
         var imgtextClass = " desktop";
+        let mobile = false;
         if (window.innerWidth < 1000) {
             imgsrc = "media/darlenesandeeplandscape-cropped.jpg";
             imgtextClass = " mobile";
+            mobile = true;
         }
         return (
             <div>
                 <img src={imgsrc} style={{marginTop: "4em", width: window.innerWidth, height: (window.innerHeight - 64), objectFit: "cover"}}></img>
                 <div className={"imgtext" + imgtextClass}>
                     <h1>
-                        Darlene & Sandeep
+                        Darlene {mobile && <br />} &{mobile && <br />} Sandeep
                     </h1>
                     <h3 style={{marginTop: "-2em", fontSize: "3em"}}>
                         ARE GETTING MARRIED
@@ -316,6 +319,7 @@ class Travel extends React.Component {
                                 Thornbury Castle <br />
                                 Bristol, UK
                             </p>
+                            <div className="btn-solid" onClick={() => window.open('https://darlenesandeepwedding.anrsvp.com/#home', '_blank')}>RSVP</div>
                             <p style={{margin: "2em 0em 2em 0em"}}>
                                 Be a part of our fairy tale
                             </p>
@@ -356,13 +360,13 @@ class Details extends React.Component {
                         Wedding Details
                         <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", margin: ".5em auto 0 auto"}}></div>
                     </h2>
-                    <p>Please wear appropriate formal attire.</p>
+                    <p style={{fontSize: mobile ? "3em" : "2em"}}>Please wear appropriate formal attire.</p>
                 </div>
                 <div style={{float: "right", width: mobile ? '100%' : '40%', paddingRight: mobile ? '0em' : '4em', textAlign: mobile ? 'center' : 'left'}}>
                     <h3>Schedule</h3>
                     <h4><span className="highlight -english_lavender">3:30PM</span>{br} Ceremony - Castle Lounge</h4>
                     <p>Please join us at the lounge at Thornbury Castle for our wedding ceremony.</p>
-                    <h4><span className="highlight -english_lavender">4:30PM</span>{br} Canapés and Lawn Games - Lawn</h4>
+                    <h4><span className="highlight -english_lavender">4:30PM</span>{br} Canapés and Lawn Games - Castle Lawn</h4>
                     <p>Following the Ceremony, we welcome you to partake in refreshments and lawn games such as archery and croquet.</p>
                     <h4><span className="highlight -english_lavender">6:00PM</span>{br} Dinner Reception - Baron’s Sitting Room</h4>
                     <p>We will have a formal three course dinner and wedding cake. Ending the night with golden hour photos, treats, activities, and traditional games as played in Tudor England. </p>
@@ -401,7 +405,7 @@ class Accomodation extends React.Component {
                         Accomodations
                         <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", margin: ".5em auto 0 auto"}}></div>
                     </h2>
-                    <p>The following are locations near the wedding venue. There are numberous other options available in Bristol City.</p>
+                    <p>The following are locations near the wedding venue. There are numerous other options available in Bristol City.</p>
                     <h3 className="-old_lavender"  style={{marginTop: "2em"}}>Thornbury Castle</h3>
                     <p>If you’d like a 10% discount at Thornbury Castle,<span style={{fontWeight: "600"}}> please contact our Wedding Coordinator, Paige Daniel-Locke (Direct Line: 01454 506191, Email: events@thornburycastle.co.uk) </span>
                         and mention our wedding day and the rooms you’d like to book. You cannot receive a 10% discount through online booking.</p>
@@ -442,6 +446,22 @@ class Gift extends React.Component {
                 </p>
             </div>
         );
+    }
+}
+
+class RSVP extends React.Component {
+    render() {
+        let marginP = '25%';
+
+        if (window.innerWidth < 1000) {
+            marginP = '5%';
+        }
+
+        return (
+            <div className="section" style={{textAlign: "center", marginLeft: marginP, marginRight: marginP}}>
+                <div className="btn-solid" onClick={() => window.open('https://darlenesandeepwedding.anrsvp.com/#home', '_blank')}>RSVP</div>
+            </div>
+        )
     }
 }
 
