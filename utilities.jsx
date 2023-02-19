@@ -265,11 +265,11 @@ class Body extends React.Component {
 
 class Landing extends React.Component {
     render() {
-        var imgsrc = "media/darlenesandeeplandscape.jpg";
+        var imgsrc = "media/option2.jpg";
         var imgtextClass = " desktop";
         let mobile = false;
         if (window.innerWidth < 1000) {
-            imgsrc = "media/darlenesandeeplandscape-cropped.jpg";
+            imgsrc = "media/option2-cropped.jpg";
             imgtextClass = " mobile";
             mobile = true;
         }
@@ -280,7 +280,7 @@ class Landing extends React.Component {
                     <h1>
                         Darlene {mobile && <br />} &{mobile && <br />} Sandeep
                     </h1>
-                    <h3 style={{marginTop: "-2em", fontSize: "3em"}}>
+                    <h3 style={{textAlign: "center", marginTop: "-2em", fontSize: "3em"}}>
                         ARE GETTING MARRIED
                     </h3>
                 </div>
