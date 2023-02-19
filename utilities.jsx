@@ -252,7 +252,7 @@ class Body extends React.Component {
                 <Landing />
                 <Travel />
                 <Details />
-                <ImgSection img="media/darlenesandeeplandscape2.jpg" />
+                <ImgSection img="media/darlenesandeeplandscape.jpg" />
                 <Gift />
                 <ImgSection img="media/darlenesandeep-hands.jpg" />
                 <Accomodation />
