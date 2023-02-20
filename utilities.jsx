@@ -377,7 +377,7 @@ class Details extends React.Component {
                     <h3>Schedule</h3>
                     <h4><span className="highlight -english_lavender">3:30PM</span>{br} Ceremony - Castle Lounge</h4>
                     <p>Please join us at the lounge at Thornbury Castle for our wedding ceremony.</p>
-                    <h4><span className="highlight -english_lavender">4:30PM</span>{br} Cocktail Hour and Canapés - Castle Lawn</h4>
+                    <h4><span className="highlight -english_lavender">4:30PM</span>{br} Canapés and Lawn Games - Castle Lawn</h4>
                     <p>Following the Ceremony, we welcome you to partake in refreshments and lawn games such as archery and croquet.</p>
                     <h4><span className="highlight -english_lavender">6:00PM</span>{br} Dinner Reception - Baron’s Sitting Room</h4>
                     <p>We will have a formal three course dinner and wedding cake. Ending the night with golden hour photos, treats, activities, and traditional games as played in Tudor England. </p>
