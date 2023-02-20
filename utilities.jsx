@@ -196,13 +196,14 @@ class Header extends React.Component {
                         xmlSpace="preserve"
                         xmlns="http://www.w3.org/2000/svg"
                         >
-                        <path fill="#FFCDB2" d="M4 10h24a2 2 0 0 0 0-4H4a2 2 0 0 0 0 4zm24 4H4a2 2 0 0 0 0 4h24a2 2 0 0 0 0-4zm0 8H4a2 2 0 0 0 0 4h24a2 2 0 0 0 0-4z" />
+                        <path fill="#E5989B" d="M4 10h24a2 2 0 0 0 0-4H4a2 2 0 0 0 0 4zm24 4H4a2 2 0 0 0 0 4h24a2 2 0 0 0 0-4zm0 8H4a2 2 0 0 0 0 4h24a2 2 0 0 0 0-4z" />
                     </svg>
                 </div>
                 <div className={"menu" + navClass} ref={this.menuRef}>
                     <div key="pageturn-travel" className="nav-page menu-item" onClick={() => this.menuHandler('travel')}>When & Where</div>
                     <div key="pageturn-details" className="nav-page menu-item" onClick={() => this.menuHandler('details')}>Details</div>
                     <div key="pageturn-gift" className="nav-page menu-item" onClick={() => this.menuHandler('gift')}>Gift</div>
+                    <div key="pageturn-waystogethere" className="nav-page menu-item" onClick={() => this.menuHandler('waystogethere')}>Travel</div>
                     <div key="pageturn-accom" className="nav-page menu-item" onClick={() => this.menuHandler('accomodation')}>Accomodations</div>
                     <div key="pageturn-rsvp" className="nav-page menu-item solid" onClick={() => this.menuHandler('rsvp')}>RSVP</div>
                 </div>
@@ -255,6 +256,8 @@ class Body extends React.Component {
                 <ImgSection img="media/darlenesandeeplandscape.jpg" />
                 <Gift />
                 <ImgSection img="media/darlenesandeep-hands.jpg" />
+                <WaysToGetThere />
+                <ImgSection img="media/option3.jpg" />
                 <Accomodation />
                 <RSVP />
             </div>
@@ -277,7 +280,7 @@ class Landing extends React.Component {
             <div>
                 <img src={imgsrc} style={{marginTop: "4em", width: window.innerWidth, height: (window.innerHeight - 64), objectFit: "cover"}}></img>
                 <div className={"imgtext" + imgtextClass}>
-                    <h1>
+                    <h1 style={{textAlign: "center"}}>
                         Darlene {mobile && <br />} &{mobile && <br />} Sandeep
                     </h1>
                     <h3 style={{textAlign: "center", marginTop: "-2em", fontSize: "3em"}}>
@@ -319,6 +322,7 @@ class Travel extends React.Component {
                                 Thornbury Castle <br />
                                 Bristol, UK
                             </p>
+                            <p>RSVP by April 8</p>
                             <div className="btn-solid" onClick={() => window.open('https://darlenesandeepwedding.anrsvp.com/#home', '_blank')}>RSVP</div>
                             <p style={{margin: "2em 0em 2em 0em"}}>
                                 Be a part of our fairy tale
@@ -355,18 +359,25 @@ class Details extends React.Component {
         return (
             <div id="details" className="section" style={{display: mobile ? 'block' : 'flex', backgroundColor: "#FDF8F3"}}>
                 <div style={{float: "left", width: mobile ? '100%' : '40%', textAlign: "center"}}>
-                    <h2 style={{marginTop: "15%", textAlign: "-webkit-center"}}>
+                    <h2 style={{marginTop: "5%", textAlign: "-webkit-center"}}>
                         <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", margin: "0 auto .5em auto"}}></div>
                         Wedding Details
                         <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", margin: ".5em auto 0 auto"}}></div>
                     </h2>
                     <p style={{fontSize: mobile ? "3em" : "2em"}}>Please wear appropriate formal attire.</p>
+                    <h3 style={{marginTop: '2em'}}>Our wedding colors:</h3>
+                    <div className="color-container">
+                        <div className="color-box" style={{backgroundColor: "#FFCDB2"}}><span>#FFCDB2<br /> Apricot</span></div>
+                        <div className="color-box" style={{backgroundColor: "#E5989B"}}><span>#E5989B<br /> Pastel Pink</span></div>
+                        <div className="color-box" style={{backgroundColor: "#B5838D"}}><span>#B5838D<br /> English Lavender</span></div>
+                        <div className="color-box" style={{backgroundColor: "#6D6875"}}><span>#6D6875<br /> Old Lavender</span></div>
+                    </div>
                 </div>
                 <div style={{float: "right", width: mobile ? '100%' : '40%', paddingRight: mobile ? '0em' : '4em', textAlign: mobile ? 'center' : 'left'}}>
                     <h3>Schedule</h3>
                     <h4><span className="highlight -english_lavender">3:30PM</span>{br} Ceremony - Castle Lounge</h4>
                     <p>Please join us at the lounge at Thornbury Castle for our wedding ceremony.</p>
-                    <h4><span className="highlight -english_lavender">4:30PM</span>{br} Canapés and Lawn Games - Castle Lawn</h4>
+                    <h4><span className="highlight -english_lavender">4:30PM</span>{br} Cocktail Hour and Canapés - Castle Lawn</h4>
                     <p>Following the Ceremony, we welcome you to partake in refreshments and lawn games such as archery and croquet.</p>
                     <h4><span className="highlight -english_lavender">6:00PM</span>{br} Dinner Reception - Baron’s Sitting Room</h4>
                     <p>We will have a formal three course dinner and wedding cake. Ending the night with golden hour photos, treats, activities, and traditional games as played in Tudor England. </p>
@@ -375,6 +386,37 @@ class Details extends React.Component {
         )
     }
 }
+
+class WaysToGetThere extends React.Component {
+    render() {
+        
+        let marginP = '25%';
+
+        if (window.innerWidth < 1000) {
+            marginP = '5%';
+        }
+
+        return (
+            <div id="waystogethere" className="section" style={{textAlign: "center"}}>
+                <div style={{marginLeft: marginP, marginRight: marginP}}>
+                    <h2 style={{textAlign: "-webkit-center"}}>
+                        <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", margin: "0 auto .5em auto"}}></div>
+                        Ways to get there
+                        <div style={{backgroundColor: "#E5989B", width: "4em", height: "3px", margin: ".5em auto 0 auto"}}></div>
+                    </h2>
+                    <h3>Starting from Bristol:</h3>
+                    <h3 className="-old_lavender" style={{marginTop: "2em"}}>Option 1</h3>
+                    <p>Uber from Bristol to Thornbury Castle (&lt;30-minute car ride).</p>
+                    <h3 className="-old_lavender" style={{marginTop: "2em"}}>Option 2</h3>
+                    <p>Take the T1 South Glos Lynx bus from Cabot Circus bus stop in Bristol. Ride 38 stops to the Rock Street stop (~40 min bus ride). Walk 10 minutes to Thornbury Castle.</p>
+                    <h3 className="-old_lavender" style={{marginTop: "2em"}}>Option 3</h3>
+                    <p>M1 Bus + T1 Bus. See Google maps for further information.</p>
+                </div>
+            </div>
+        );
+    }
+}
+
 class Accomodation extends React.Component {
     
     booking(dir) {
@@ -459,6 +501,8 @@ class RSVP extends React.Component {
 
         return (
             <div className="section" style={{textAlign: "center", marginLeft: marginP, marginRight: marginP}}>
+                
+                <p>RSVP by April 8</p>
                 <div className="btn-solid" onClick={() => window.open('https://darlenesandeepwedding.anrsvp.com/#home', '_blank')}>RSVP</div>
             </div>
         )

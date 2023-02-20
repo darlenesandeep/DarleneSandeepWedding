@@ -178,8 +178,8 @@ button:hover {
 .menu-full {
     float: right;
     margin-top: 0.5em;
-    margin-right: 6em;
-    margin-left: -20em;
+    margin-right: 2em;
+    margin-left: -25em;
 }
 .menu-item, .btn-solid {
     cursor: pointer;
@@ -242,7 +242,7 @@ button:hover {
     position: absolute;
     right: 0;
     top: 4em;
-    background-color: #fdf8f3;
+    background-color: #FFCDB2;
     padding: 4em 4em 2em 4em;
 }
 .menu-collapsed .menu-item {
@@ -278,6 +278,37 @@ button:hover {
 .-old_lavender {
     color: #6D6875 ;
     font-weight: 600;
+}
+
+.color-container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.color-box {
+    width: 7em;
+    height: 10em;
+    position: relative;
+}
+
+.color-box span {
+    font-family: 'Spectral-Bold';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+@media (max-width: 1000px) {
+    .color-box {
+        width: 13em;
+        height: 17em;
+    }
+
+    .color-box span {
+        font-size: 2em;
+    }
 }
 
 .section {
@@ -393,7 +424,7 @@ button:hover {
 
 @media (max-width: 1000px) {
     .header-title {
-        float: left;
+        margin-right: 6em;
     }
 }
 .save-the-date-wrapper {
