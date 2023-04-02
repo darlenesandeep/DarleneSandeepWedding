@@ -322,7 +322,6 @@ class Travel extends React.Component {
                                 Thornbury Castle <br />
                                 Bristol, UK
                             </p>
-                            <p>RSVP by April 8</p>
                             <div className="btn-solid" onClick={() => window.open('https://darlenesandeepwedding.anrsvp.com/#home', '_blank')}>RSVP</div>
                             <p style={{margin: "2em 0em 2em 0em"}}>
                                 Be a part of our fairy tale
@@ -502,7 +501,6 @@ class RSVP extends React.Component {
         return (
             <div className="section" style={{textAlign: "center", marginLeft: marginP, marginRight: marginP}}>
                 
-                <p>RSVP by April 8</p>
                 <div className="btn-solid" onClick={() => window.open('https://darlenesandeepwedding.anrsvp.com/#home', '_blank')}>RSVP</div>
             </div>
         )
